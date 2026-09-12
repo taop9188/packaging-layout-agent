@@ -35,7 +35,9 @@
 - 仓库：`taop9188/packaging-layout-agent`。
 - 可见性：`private`。
 - 默认分支：`main`。
-- 创建时仓库大小为 0；P0 文件尚未由本地 Git 对应提交核验到远端。
+- 远端分支：`main`、`dev`，当前 `dev` HEAD 为 `d8938b9e06d78c4546e707dd9f4145a95114fc3e`。
+- 远端抽样文件：`docs/STAGE_GATES.md`、`records/P0_EVIDENCE.md`、`tests/test_p0_baseline.py` 均可从 `dev` 读取。
+- `main`/`dev` 当前 API 状态均为未保护；因此“main 只保留验收通过版本”目前是仓库协议与 CI 约束，尚未成为 GitHub 强制规则。
 
 ## E. 本地检查记录
 
@@ -49,6 +51,7 @@
 ## F. 当前阻断项
 
 1. Codex 原生管理器的模型与项目 exact `deepseek-v4.1-flash` 不一致，且没有实时验收双证据。
-2. 本地 P0 提交尚未与 GitHub `dev` 分支形成可核验对应关系。
-3. Developer/Reviewer 的独立上下文还需要在 TRAE 中建立并记录只读审计结果。
-4. P0 用户/终审尚未完成。
+2. GitHub 的 `main`/`dev` 尚未配置强制保护；当前只完成协议文件和 CI 约束。
+3. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
+4. Developer/Reviewer 的独立上下文已创建，但首条确认响应仍未形成可复核的完成证据。
+5. P0 用户/终审尚未完成。
