@@ -73,8 +73,28 @@
 | 2026-09-12 | `python3 -m unittest discover -s tests -p 'test_*.py' -v` | 0 | `5/5` 通过；含一次初版扫描规则修正后的新鲜结果 |
 | 2026-09-12 | `python3 scripts/p0_gate.py` | 0 | 首次运行 `local_gate=true`；当时发现 `logs/README.md` 尚未纳入提交，已补正后重跑 |
 
+## D2. 当前零费用路线状态（2026-09-12）
+
+本节是对 D 节历史状态的当前修订，不删除历史证据。
+
+- 用户已确认：不购买 GitHub Pro，不使用 Codex 原生 DeepSeek 替代 TRAE；采用“P0 GitHub Free 公开审计仓库，P1 起迁移 GitLab Free 私有项目”的路线。
+- GitHub 仓库当前可见性已在设置页确认是 `public`。
+- 公开仓库当前范围仍限于 P0 文档、测试、门禁脚本、日志说明和脱敏证据；未放入包装业务代码、客户资料、真实 Adobe 文件、私密算法或凭据。
+- 已通过 GitHub 网页端同步的范围修订提交包括：`fdbf8a8`（README）、`c1945ba`（路线规范文档）、`e139977`（执行计划）。这些提交在远端提交页显示状态检查成功。
+- GitHub ruleset：`P0 main protected`，规则集 ID `23008634`，状态为 Active；目标为默认分支 `main`。
+- 已核实的规则：合并前必须提交拉取请求；必须通过状态检查 `P0 local gate`；限制删除；阻止强制推送；旁路列表为空。
+- 规则集页面的状态检查来源显示为“任何来源”；本记录不声称其已限制为 GitHub Actions。当前 P0 仅要求检查名称与结果可追溯。
+- P1 的 GitLab Free 私有项目尚未创建；这是 P0 用户/终审通过后的迁移入口，不在本轮提前执行。
+
 ## F. 当前阻断项
 
-1. GitHub 的 `main`/`dev` 尚未配置强制保护；rulesets 接口明确要求 GitHub Pro 或公开仓库，当前只完成协议文件和 CI 约束。
-2. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA，且当前本机 Git transport 没有可用 GitHub 凭据；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
-3. P0 用户/终审尚未完成。
+1. 本机 Git transport 仍没有可用 GitHub 凭据；本地提交与 GitHub 网页端内容提交的 SHA 不共用。远端文件和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
+2. P0 用户/终审尚未完成，不能创建 P0 PASS tag，也不能进入 P1。
+3. 规则集的状态检查来源仍显示为“任何来源”；这不是当前 P0 的阻断项，但已明确记录，后续若需要收紧必须单独变更并留证。
+
+## G. 零费用路径变更记录
+
+- 用户已确认采用零额外费用路线：P0 使用 GitHub Free 公开审计仓库；P1 起迁移到 GitLab Free 私有项目。
+- 当前本地仓库已更新 SPEC、架构、开发协议、Stage Gate、测试计划、README 和仓库策略，明确公开仓库禁止业务代码、客户资料、真实 Adobe 文件、私密算法和凭据。
+- 2026-09-12 已完成公开设置并在 GitHub 设置页复核；随后创建并复核 Active ruleset `23008634`，将 `main` 的关键保护规则落到 GitHub。
+- 未迁移到 GitLab、未删除或归档任何仓库；P1 及后续包装业务代码均未开始。
