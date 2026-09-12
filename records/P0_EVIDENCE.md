@@ -42,13 +42,11 @@
 - 早期中文输入截断导致的旧 Developer 任务曾在其 TRAE 临时目录生成 3 个文档；这些文件不在本项目仓库内，不作为源码或基线证据。
 - 早期 Reviewer 请求曾返回 HTTP 502；该失败发生在本轮配置连通性复测之前，保留为历史失败记录，不覆盖本轮成功验证。
 
-## C. Codex 原生 DeepSeek 证据
+## C. Codex 原生 DeepSeek 范围决策
 
-- 管理脚本静态状态：`configured`；Keychain 中存在凭据状态，但没有输出 Key 内容。
-- 管理脚本固定模型：`deepseek-v4-flash`，不是项目要求的 `deepseek-v4.1-flash`。
-- `setup --json` 返回官方安装脚本格式已变化，未执行远程脚本。
-- `test --json` 未返回可接受的 `NATIVE_DEEPSEEK_OK` 与子线程数据库元数据双证据。
-- 结论：Codex 原生 Developer/Reviewer 的 exact v4.1-flash 验收未完成，不能用其替代 TRAE 证据。
+- 用户最新决定：不需要 Codex 原生 DeepSeek 替代 TRAE。
+- Codex 原生 DeepSeek 管理器不纳入本次 P0 验收范围，也不作为 TRAE 的替代或兜底依据。
+- 不执行原生模型替换，不把原生管理器的状态写成 TRAE Provider 验收证据。
 
 ## D. GitHub 证据
 
@@ -71,8 +69,6 @@
 
 ## F. 当前阻断项
 
-1. Codex 原生管理器的模型与项目 exact `deepseek-v4.1-flash` 不一致，且没有实时验收双证据。
-2. GitHub 的 `main`/`dev` 尚未配置强制保护；当前只完成协议文件和 CI 约束。
-3. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
-4. 本轮 TRAE Provider、3 次最小请求、正常代码任务及 Developer/Reviewer 上下文均已形成可复核证据；不再作为当前阻断项。
-5. P0 用户/终审尚未完成。
+1. GitHub 的 `main`/`dev` 尚未配置强制保护；当前只完成协议文件和 CI 约束。
+2. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
+3. P0 用户/终审尚未完成。
