@@ -57,7 +57,9 @@
 - 远端分支：`main`、`dev`；通过远端分支查询确认两者存在。
 - GitHub `main` 基线提交：`bb3ff40a3960bf793d43edd8b95065c630ec0ffe`；本轮范围修订同步前的 `dev` 提交：`6bad0d86b9d57b0f7102b311a0d790a88685b794`。
 - 随后的 `records/P0_EVIDENCE.md` 内容同步操作由 GitHub API 返回新 `dev` 提交：`22859c0d934c668ae7c071c2ed6227f20e50507f`。
-- 本地 `dev` 当前提交：`6845b00ebaa3b11ec63228ec56ff04297ae0095e`；本次范围修订已提交，工作树保持干净。
+- 本地 `dev` 在完成范围修订时的提交：`2f57d896548f88af737e9e875e463c3de1bed1e6`；随后补充 transport 证据并重新提交，工作树保持干净。
+- 本地 `origin` 已配置为 `https://github.com/taop9188/packaging-layout-agent.git`，未在 URL 中嵌入凭据。
+- 只读 Git transport 验证未通过：`git ls-remote --heads origin` 返回 `could not read Username for 'https://github.com': Device not configured`；未执行 push、强制更新或覆盖远端历史。
 - 远端抽样文件：`docs/STAGE_GATES.md`、`records/P0_EVIDENCE.md`、`tests/test_p0_baseline.py` 均可从 `dev` 读取。
 - `main`/`dev` 当前 API 状态均为未保护；因此“main 只保留验收通过版本”目前是仓库协议与 CI 约束，尚未成为 GitHub 强制规则。
 
@@ -73,5 +75,5 @@
 ## F. 当前阻断项
 
 1. GitHub 的 `main`/`dev` 尚未配置强制保护；当前只完成协议文件和 CI 约束。
-2. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
+2. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA，且当前本机 Git transport 没有可用 GitHub 凭据；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
 3. P0 用户/终审尚未完成。
