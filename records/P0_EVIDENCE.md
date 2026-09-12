@@ -56,7 +56,7 @@
 - 仓库：`taop9188/packaging-layout-agent`。
 - 可见性：`private`。
 - 默认分支：`main`。
-- 远端分支：`main`、`dev`，本记录更新后的 `dev` HEAD 为 `bbc7a997f14a4490167a7486fda7bb2064a6880e`。
+- 远端分支：`main`、`dev`，本记录更新后的 `dev` HEAD 为 `79a031b98c4865acc097aac67e9011a7a3efb374`。
 - 远端抽样文件：`docs/STAGE_GATES.md`、`records/P0_EVIDENCE.md`、`tests/test_p0_baseline.py` 均可从 `dev` 读取。
 - `main`/`dev` 当前 API 状态均为未保护；因此“main 只保留验收通过版本”目前是仓库协议与 CI 约束，尚未成为 GitHub 强制规则。
 
