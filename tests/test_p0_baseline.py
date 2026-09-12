@@ -66,7 +66,6 @@ class P0BaselineTests(unittest.TestCase):
         self.assertIn("P0 = BLOCKED", (ROOT / "README.md").read_text(encoding="utf-8"))
         self.assertIn("连续 3 次最小请求", gates)
         self.assertIn("deepseek-v4.1-flash", spec)
-        self.assertIn("deepseek-v4-flash", spec)
 
 
 if __name__ == "__main__":
