@@ -1,0 +1,15 @@
+[build-system]
+requires = []
+build-backend = "_internal_no_build_backend"
+
+[project]
+name = "packaging-production-agent"
+version = "0.1.0"
+description = "Stage-gated P0 baseline for the Packaging Production Agent"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.p0]
+required_stage = "P0"
+business_code_allowed = false
+external_network_allowed = false
