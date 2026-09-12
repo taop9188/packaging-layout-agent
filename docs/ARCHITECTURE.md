@@ -9,7 +9,9 @@
   ↓
 主控 Agent：架构 / 证据 / Stage Gate / 交付验收
   ↓
-GitHub 私有仓库：唯一源码与阶段状态基线
+GitHub Free 公开审计仓库：仅 P0 基线，不承载业务代码
+  ↓ P0 通过前完成迁移
+GitLab Free 私有仓库：P1 起唯一源码与阶段状态基线
   ↓
 TRAE Developer：受范围约束的编码、测试、提交和推送
 TRAE Reviewer：独立上下文的只读审计与测试
@@ -32,7 +34,7 @@ P0 只包含：
 - 规范层：`docs/` 下十份冻结文档。
 - 验证层：`scripts/p0_gate.py` 与 `tests/`。
 - 证据层：`records/P0_EVIDENCE.md` 与脱敏 JSONL 约定。
-- 版本层：Git `dev`/`main` 规则和 GitHub 私有仓库。
+- 版本层：Git `dev`/`main` 规则；P0 使用 GitHub Free 公开审计仓库，P1 起使用 GitLab Free 私有仓库。
 - Agent 层：TRAE 的 Developer/Reviewer 会话定义及验收清单。
 
 P0 不产生任何 Worker、Adobe、Scene Graph 或包装生产运行时模块。

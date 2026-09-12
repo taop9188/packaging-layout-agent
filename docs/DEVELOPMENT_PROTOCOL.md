@@ -4,6 +4,7 @@
 
 - `main` 只保存已通过当前 Stage 终审的版本。
 - `dev` 承载开发、测试和 Reviewer 审计。
+- P0 阶段的公开 GitHub 仓库只允许 P0 基线文件；P0 通过后必须先迁移到 GitLab Free 私有仓库，才允许开始 P1。
 - 每次提交只做一个可说明的变更，提交消息使用 `type: scope: summary` 形式，例如 `docs: p0: freeze stage gates`。
 - 未通过本地检查的提交不得推送到 `main`。
 - 关键 tag 只能指向已有证据的提交；当前 P0 未通过前不创建 PASS tag。
@@ -16,7 +17,7 @@
 2. 工作树中没有被忽略规则之外的 Secret、数据库、缓存或原始日志。
 3. 本地测试与 P0 gate 均返回 0。
 4. 提交内容和提交消息与任务范围一致。
-5. 推送目标是已确认的 `taop9188/packaging-layout-agent`。
+5. P0 推送目标是已确认的 `taop9188/packaging-layout-agent` 公开审计仓库；P1 起推送目标必须是已经完成保护规则核验的 GitLab Free 私有仓库。
 
 自动化不得：
 
