@@ -1,0 +1,46 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+credentials.json
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Runtime and generated data
+logs/*.jsonl
+logs/*.log
+*.db
+*.sqlite
+*.sqlite3
+dist/
+build/
+coverage.xml
+htmlcov/
+
+# OS, editor, and application artifacts
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tmp
+*.temp
+adobe-temp/
+worker-runtime/
+artifacts/generated/
+
+# Local evidence exports must be explicitly redacted before tracking
+records/raw/
