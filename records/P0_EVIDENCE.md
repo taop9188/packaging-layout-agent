@@ -62,6 +62,7 @@
 - 只读 Git transport 验证未通过：`git ls-remote --heads origin` 返回 `could not read Username for 'https://github.com': Device not configured`；未执行 push、强制更新或覆盖远端历史。
 - 远端抽样文件：`docs/STAGE_GATES.md`、`records/P0_EVIDENCE.md`、`tests/test_p0_baseline.py` 均可从 `dev` 读取。
 - `main`/`dev` 当前 API 状态均为未保护；因此“main 只保留验收通过版本”目前是仓库协议与 CI 约束，尚未成为 GitHub 强制规则。
+- GitHub rulesets 读取接口返回 `403: Upgrade to GitHub Pro or make this repository public to enable this feature`；本次保持仓库私有，未公开仓库或绕过该限制。
 
 ## E. 本地检查记录
 
@@ -74,6 +75,6 @@
 
 ## F. 当前阻断项
 
-1. GitHub 的 `main`/`dev` 尚未配置强制保护；当前只完成协议文件和 CI 约束。
+1. GitHub 的 `main`/`dev` 尚未配置强制保护；rulesets 接口明确要求 GitHub Pro 或公开仓库，当前只完成协议文件和 CI 约束。
 2. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA，且当前本机 Git transport 没有可用 GitHub 凭据；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
 3. P0 用户/终审尚未完成。
