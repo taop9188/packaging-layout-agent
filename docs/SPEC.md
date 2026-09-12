@@ -59,5 +59,5 @@ P0 不包含：
 - 没有连续 3 次最小请求和 1 次正常代码任务，不能通过 Provider 验收。
 - 没有独立 Reviewer 证据，不能把 P0 标为 PASS。
 - 没有真实颜色、几何和生产证据，不能声称包装文件已达到印前交付标准。
-- 不得把 `deepseek-v4-flash` 作为 `deepseek-v4.1-flash` 的静默替代。
+- TRAE Provider 验收只认当前配置的 `deepseek-v4.1-flash`；不得用其他模型替代或覆盖结果。
 - P0 未通过前不得进入 P1 或写包装业务代码。
