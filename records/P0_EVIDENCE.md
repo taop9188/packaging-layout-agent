@@ -12,14 +12,35 @@
 - 不能把当前状态写成 `gpt-5.6-terra`；此前 Terra 条件已被用户在本轮覆盖。
 - 思考强度的当前值未从任务元数据独立读出，未作为已满足项。
 
-## B. TRAE Provider 历史证据
+## B. TRAE Provider 证据
 
-- 来源：同日独立 TRAE 排障任务，任务标题为“修复 TRAE DeepSeek 超时错误”。
-- Provider：`custom_openai_compatible`；显示模型：`deepseek-v4.1-flash`。
-- Base URL 与协议在报告中已记录，API Key 只记录为已保存/掩码状态，未记录明文。
-- 修复动作：思考模式从“跟随模型默认配置”改为“关闭”；没有更换模型 ID、Base URL 或协议。
-- 结果：修复后连续最小请求 `3/3` 成功，随后 1 次正常代码任务退出码为 0，输出为 `TRAE_PROVIDER_OK`。
-- 限制：这是历史任务证据；若 Provider 在本记录之后发生变化，必须重新执行验证。
+### B1. 当前配置与连通性
+
+- 2026-09-12 11:32-11:33，TRAE 当前模型管理界面仍显示 `deepseek-v4.1-flash`。
+- Provider：`custom_openai_compatible`；协议：OpenAI Chat Completions。
+- Base URL：`https://ai.comfly.org/v1`；TRAE 实际请求端点为 `/v1/chat/completions`。
+- API Key：已保存/掩码状态；本记录不保存明文。
+- 唯一配置修正：思考模式确认并保存为“关闭”；没有更换模型 ID、Base URL 或协议。
+- TRAE 日志证据：`custom_model_connectivity_check` 在 `11:32:57.509` 发起，`11:33:15.361` 成功，耗时约 `17.852s`；`settings_custom_model_connect` 记录 `is_success:true`。
+- 该连通性测试只证明 Provider 检查成功，不单独替代下面的完整请求序列。
+
+### B2. 本轮新鲜请求验证
+
+以下请求均在上述连通性测试之后，于同一个 TRAE 当前模型选择下完成；每次只在上一请求形成明确结果后才发送下一次。
+
+| 时间 | 验证 | 实际结果 | 状态 |
+|---|---|---|---|
+| 11:36 | `Reply only OK-1` | 返回 `OK-1` | PASS |
+| 11:37 | `Reply only OK-2` | 返回 `OK-2` | PASS |
+| 11:38 | `Reply only OK-3` | 返回 `OK-3` | PASS |
+| 11:39，任务耗时 42s | 创建并运行临时 `hello_timeout_check.py` | 输出 `TRAE_PROVIDER_OK`；退出码 `0`；确认未触碰项目文件或文档 | PASS |
+
+### B3. 角色上下文
+
+- Reviewer 独立任务于 11:42 返回 `REVIEWER_CONTEXT_READY`，确认 P0-only、只读、独立上下文、证据优先，并声明缺证据时返回 `BLOCKED`。
+- 干净 Developer 独立任务于 11:44 返回 `DEVELOPER_CONTEXT_READY`，确认 P0-only、只有明确指派时才可写入、不得改 `SPEC`/降门禁/宣告 PASS、不得进入 P1 或包装业务代码、失败停止。
+- 早期中文输入截断导致的旧 Developer 任务曾在其 TRAE 临时目录生成 3 个文档；这些文件不在本项目仓库内，不作为源码或基线证据。
+- 早期 Reviewer 请求曾返回 HTTP 502；该失败发生在本轮配置连通性复测之前，保留为历史失败记录，不覆盖本轮成功验证。
 
 ## C. Codex 原生 DeepSeek 证据
 
@@ -35,7 +56,7 @@
 - 仓库：`taop9188/packaging-layout-agent`。
 - 可见性：`private`。
 - 默认分支：`main`。
-- 远端分支：`main`、`dev`，当前 `dev` HEAD 为 `d8938b9e06d78c4546e707dd9f4145a95114fc3e`。
+- 远端分支：`main`、`dev`，本记录更新后的 `dev` HEAD 为 `bbc7a997f14a4490167a7486fda7bb2064a6880e`。
 - 远端抽样文件：`docs/STAGE_GATES.md`、`records/P0_EVIDENCE.md`、`tests/test_p0_baseline.py` 均可从 `dev` 读取。
 - `main`/`dev` 当前 API 状态均为未保护；因此“main 只保留验收通过版本”目前是仓库协议与 CI 约束，尚未成为 GitHub 强制规则。
 
@@ -53,5 +74,5 @@
 1. Codex 原生管理器的模型与项目 exact `deepseek-v4.1-flash` 不一致，且没有实时验收双证据。
 2. GitHub 的 `main`/`dev` 尚未配置强制保护；当前只完成协议文件和 CI 约束。
 3. 本地 Git 提交与 GitHub 内容 API 的提交历史不共用 SHA；内容和路径已抽样核验，但尚未建立同一 Git transport 的镜像关系。
-4. Developer/Reviewer 的独立上下文已创建，但首条确认响应仍未形成可复核的完成证据。
+4. 本轮 TRAE Provider、3 次最小请求、正常代码任务及 Developer/Reviewer 上下文均已形成可复核证据；不再作为当前阻断项。
 5. P0 用户/终审尚未完成。
