@@ -1,0 +1,20 @@
+name: P0 local gate
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  p0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run deterministic P0 gate
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Run read-only P0 gate wrapper
+        run: python scripts/p0_gate.py
