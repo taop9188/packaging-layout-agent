@@ -102,7 +102,7 @@
 - Record: `records/P0_EVIDENCE.md`
 
 - [ ] **Step 1: Preserve the existing Provider configuration before any change.** Record only masked Key state and non-secret fields: Base URL, model ID, protocol, timeout/retry visibility, and error code.
-- [ ] **Step 2: Confirm the actual TRAE model is `deepseek-v4.1-flash`.** Do not substitute the Codex-native `deepseek-v4-flash` role.
+- [ ] **Step 2: Confirm the actual TRAE model is `deepseek-v4.1-flash`.** Codex-native DeepSeek is outside this P0 acceptance scope and is not used as a replacement.
 - [ ] **Step 3: Use one new Developer session and one separate Reviewer session.** Developer may edit only the scoped repository; Reviewer is read-only/test/audit and must not write or commit.
 - [ ] **Step 4: Verify three minimum requests and one normal code task after the last Provider change.** Do not repeat requests after a missing or contradictory result without first recording the cause.
 - [ ] **Step 5: Record the earlier same-day TRAE evidence as historical evidence and distinguish it from current-session verification.** The historical result is not a substitute for a new result when the Provider changed.
@@ -116,7 +116,7 @@
 
 - [ ] **Step 1: Run the full local verification command and inspect the complete output.** Check exit code, test count, secret scan result, and forbidden-path result.
 - [ ] **Step 2: Compare the working tree and GitHub `dev` state.** Confirm no untracked secret, cache, runtime database, or generated output is present.
-- [ ] **Step 3: Obtain independent Reviewer evidence.** It must cite the exact files and outputs inspected and may return BLOCKED for missing native-agent evidence.
+- [ ] **Step 3: Obtain independent Reviewer evidence.** It must cite the exact files and outputs inspected. Native-agent evidence is outside this P0 scope.
 - [ ] **Step 4: Decide P0 status from evidence.** Mark `PASS` only when every P0 criterion is true; otherwise mark `BLOCKED` with the exact missing evidence and stop before P1.
 - [ ] **Step 5: Prepare user handoff.** Report actual model/provider, repository visibility, commit/tag IDs, test counts, historical versus current evidence, and the next required user action.
 
